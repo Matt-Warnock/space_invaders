@@ -12,7 +12,7 @@ class Player {
       this.center.x += 2;
     }
     if (this.keyboarder.isDown(this.keyboarder.KEYS.SPACE)) {
-      var bullet = new Bullet ({x: this.center.x, y: this.center.y - this.size.x / 2}, {x: 0, y: -7});
+      let bullet = new Bullet ({x: this.center.x, y: this.center.y - this.size.x / 2}, {x: 0, y: -7});
       this.game.addBody(bullet);
     }
   }

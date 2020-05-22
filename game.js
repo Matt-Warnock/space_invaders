@@ -3,14 +3,13 @@ class Game {
     this.canvas = document.getElementById(canvasId);
     this.screen = this.canvas.getContext('2d');
     this.gameSize = {x: this.canvas.width, y: this.canvas.height};
-    this.bodies = this.createInvaders(this).concat(new Player(this, this.gameSize));
+    this.bodies = this.createInvaders().concat(new Player(this, this.gameSize));
   }
 
   run() {
-    var self= this;
-    var tick = function() {
-      self.update();
-      self.draw(self.screen, self.gameSize);
+    let tick = () => {
+      this.update();
+      this.draw(this.screen, this.gameSize);
       requestAnimationFrame(tick);
     };
     tick();
@@ -23,14 +22,14 @@ class Game {
 
     this.bodies = this.bodies.filter(notCollidingWithAnything);
 
-    for (var i = 0; i < this.bodies.length; i++) {
+    for (let i = 0; i < this.bodies.length; i++) {
       this.bodies[i].update();
     }
   }
 
   draw(screen, gameSize) {
     screen.clearRect(0, 0, gameSize.x, gameSize.y);
-    for (var i = 0; i < this.bodies.length; i++) {
+    for (let i = 0; i < this.bodies.length; i++) {
       this.drawRect(screen, this.bodies[i]);
     }
   }
@@ -53,12 +52,12 @@ class Game {
         this.bodies.push(body);
       }
 
-      createInvaders(game) {
-        var invaders = [];
-        for (var i = 0; i < 24; i++) {
-          var x = 30 + (i % 8) * 30;
-          var y = 30 + (i % 3) * 30;
-          invaders.push(new Invader(game, {x: x, y: y}));
+      createInvaders() {
+        let invaders = [];
+        for (let i = 0; i < 24; i++) {
+          let x = 30 + (i % 8) * 30;
+          let y = 30 + (i % 3) * 30;
+          invaders.push(new Invader(this, {x: x, y: y}));
         }
         return invaders;
       }
@@ -68,7 +67,7 @@ class Game {
     class Keyboarder {
       constructor() {
         this.KEYS = {LEFT: 37, RIGHT: 39, SPACE: 32};
-        var keyState = {};
+        let keyState = {};
 
         window.onkeydown = function(e) {
           keyState[e.keyCode] = true;
