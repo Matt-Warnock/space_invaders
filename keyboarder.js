@@ -2,16 +2,17 @@
 class Keyboarder {
   constructor() {
     this.KEYS = {LEFT: 37, RIGHT: 39, SPACE: 32};
-    let keyState = {};
+    this.keyState = {};
 
-    window.onkeydown = function(e) {
-      keyState[e.keyCode] = true;
+    window.onkeydown = (e) => {
+      this.keyState[e.keyCode] = true;
     };
-    window.onkeyup = function(e) {
-      keyState[e.keyCode] = false;
+    window.onkeyup = (e) => {
+      this.keyState[e.keyCode] = false;
     };
-    this.isDown = function(keyCode) {
-      return keyState[keyCode] === true;
-    };
+  }
+  
+  isDown(keyCode) {
+    return this.keyState[keyCode] === true;
   }
 }
