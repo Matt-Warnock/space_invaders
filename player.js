@@ -20,6 +20,7 @@ class Player {
     if (this.keyboarder.isDown(this.keyboarder.KEYS.SPACE)) {
       let bullet = new Bullet ({x: this.center.x, y: this.center.y - this.size.x / this.margin}, {x: 0, y: -7});
       this.game.addBody(bullet);
+      this.keyboarder.keyState[this.keyboarder.KEYS.SPACE] = false;
     }
   }
 }
