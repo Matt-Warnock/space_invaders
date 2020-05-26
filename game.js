@@ -6,6 +6,10 @@ class Game {
     this.bodies = this.createInvaders().concat(new Player(this, this.gameSize));
   }
 
+initialize() {
+
+}
+
   run() {
     let tick = () => {
       this.update();
