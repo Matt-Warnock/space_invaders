@@ -14,15 +14,15 @@ class Keyboarder {
   }
 
   isDown(keyCode) {
-    return this.keyState[keyCode] === true;
+    return this.keyState[keyCode];
   }
 
   keyTap(keyCode) {
-    if (this.keyState[keyCode] === false) {
+    if (!this.keyState[keyCode]) {
       this.isKeyUp = true;
     }
-    if (!this.isKeyUp) return;
-    else if (this.keyState[keyCode] === true) {
+    if (!this.isKeyUp) return false;
+    else if (this.keyState[keyCode]) {
       this.isKeyUp = false;
       return true;
     }
