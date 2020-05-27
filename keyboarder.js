@@ -4,6 +4,7 @@ class Keyboarder {
     this.KEYS = {LEFT: 37, RIGHT: 39, SPACE: 32};
     this.keyState = {};
     this.isKeyUp = true;
+    this.keyPressNotRepeat = false;
 
     window.onkeydown = (e) => {
       this.keyState[e.keyCode] = true;
@@ -17,14 +18,22 @@ class Keyboarder {
     return this.keyState[keyCode];
   }
 
-  keyTap(keyCode) {
+  shootOnce(keyCode) {
+    this.keyRepeatCheck(keyCode);
+    return this.keyPressNotRepeat;
+  }
+
+  keyRepeatCheck(keyCode) {
     if (!this.keyState[keyCode]) {
       this.isKeyUp = true;
+      this.keyPressNotRepeat = false;
     }
-    if (!this.isKeyUp) return false;
+    else if (!this.isKeyUp) {
+      this.keyPressNotRepeat = false;
+    }
     else if (this.keyState[keyCode]) {
       this.isKeyUp = false;
-      return true;
+      this.keyPressNotRepeat = true;
     }
   }
 }
