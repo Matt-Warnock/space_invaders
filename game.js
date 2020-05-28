@@ -5,25 +5,48 @@ class Game {
     this.screen = this.canvas.getContext('2d');
     this.gameSize = {x: this.canvas.width, y: this.canvas.height};
     this.gameLeftSide = 0;
-    this.bodies = this.createInvaders().concat(new Player(this, this.gameSize));
-    this.gameIsRunning = false;
+    this.bodies = [];
+    this.gameInMotion = false;
   }
 
-initialize() {
-  this.textGameMiddle('Press button to play game');
-  button.addEventListener('click', () => {
-    if (!this.gameIsRunning) {
-      this.run();
+  initialize() {
+    button.addEventListener('focus', event => event.currentTarget.blur());
+    this.textGameMiddle('Press button to play game');
+
+    button.addEventListener('click', () => {
+      if (!this.gameInMotion) {
+        this.gameInMotion = true;
+        this.bodies = this.createInvaders().concat(new Player(this, this.gameSize));
+        this.run();
+      }
+    });
+  }
+
+  haveBeenDestroyed(constructorName) {
+    return this.bodies.filter(b => b.constructor.name === constructorName).length === 0;
+  }
+
+  checkStatus() {
+    if (this.haveBeenDestroyed('Player')) {
+      this.gameInMotion = false;
+      this.textGameMiddle('Game Over');
+
+    } else if (this.haveBeenDestroyed('Invader') && !this.haveBeenDestroyed('Player')) {
+      this.gameInMotion = false;
+      this.screen.clearRect(0, 0, this.gameSize.x, this.gameSize.y);
+      this.textGameMiddle('You Win!');
     }
-  });
-}
+  }
 
   run() {
-    this.gameIsRunning = true;
     let tick = () => {
       this.update();
       this.draw(this.screen, this.gameSize);
-      requestAnimationFrame(tick);
+      this.checkStatus();
+
+      if (this.gameInMotion) {
+        requestAnimationFrame(tick);
+      }
     };
     tick();
   }
