@@ -1,12 +1,25 @@
 class Game {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
+    this.button = document.getElementById('button');
     this.screen = this.canvas.getContext('2d');
     this.gameSize = {x: this.canvas.width, y: this.canvas.height};
+    this.gameLeftSide = 0;
     this.bodies = this.createInvaders().concat(new Player(this, this.gameSize));
+    this.gameIsRunning = false;
   }
 
+initialize() {
+  this.textGameMiddle('Press button to play game');
+  button.addEventListener('click', () => {
+    if (!this.gameIsRunning) {
+      this.run();
+    }
+  });
+}
+
   run() {
+    this.gameIsRunning = true;
     let tick = () => {
       this.update();
       this.draw(this.screen, this.gameSize);
@@ -25,6 +38,12 @@ class Game {
     for (let i = 0; i < this.bodies.length; i++) {
       this.bodies[i].update();
     }
+  }
+
+  textGameMiddle(text) {
+    this.screen.font = 'bold 1em "Press Start 2P"';
+    let textMiddle = Math.max(this.gameSize.x / 2 - this.screen.measureText(text).width / 2, this.gameLeftSide);
+    this.screen.fillText(text, textMiddle, this.gameSize.y / 2, this.gameSize.x);
   }
 
   draw(screen, gameSize) {
@@ -64,5 +83,5 @@ class Game {
     }
 
     window.onload = function() {
-      (new Game('screen')).run();
+      (new Game('screen')).initialize();
     };
