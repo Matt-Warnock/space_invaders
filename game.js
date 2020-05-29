@@ -6,7 +6,7 @@ class Game {
     this.gameSize = {x: this.canvas.width, y: this.canvas.height};
     this.gameLeftSide = 0;
     this.bodies = this.bodies = this.createInvaders().concat(new Player(this));
-    this.gameInitialized = false;
+    this.userEngaged = false;
   }
 
   initialize() {
@@ -14,8 +14,8 @@ class Game {
     this.textGameMiddle('Press button to play game');
 
     button.addEventListener('click', () => {
-      if (!this.gameInitialized) {
-        this.gameInitialized = true;
+      if (!this.userEngaged) {
+        this.userEngaged = true;
         this.run();
       }
       this.gameReset();
@@ -41,13 +41,19 @@ class Game {
 
   run() {
     let tick = () => {
+      this.userOnScreenCheck();
       this.update();
       this.draw(this.screen, this.gameSize);
       this.checkStatus();
-
-      requestAnimationFrame(tick);
+      if (this.userEngaged) {
+        requestAnimationFrame(tick);
+      }
     };
     tick();
+  }
+
+  userOnScreenCheck() {
+    window.addEventListener('blur', () => this.userEngaged = false);
   }
 
   update() {
