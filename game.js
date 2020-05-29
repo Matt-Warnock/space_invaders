@@ -7,6 +7,7 @@ class Game {
     this.gameLeftSide = 0;
     this.gameReset();
     this.userEngaged = false;
+    this.playerLives = 2;
   }
 
   initialize() {
@@ -25,6 +26,7 @@ class Game {
 
   gameReset() {
     this.bodies = this.createInvaders().concat(new Player(this));
+    this.playerLives = 2;
   }
 
   haveBeenDestroyed(constructorName) {
@@ -33,7 +35,12 @@ class Game {
 
   checkStatus() {
     if (this.haveBeenDestroyed('Player')) {
-      this.textGameMiddle('Game Over');
+      if (this.playerLives < 1) {
+        this.textGameMiddle('Game Over');
+        return;
+      }
+      this.addBody(new Player(this));
+      this.playerLives -= 1;
 
     } else if (this.haveBeenDestroyed('Invader')) {
       this.textGameMiddle('You Win!');
