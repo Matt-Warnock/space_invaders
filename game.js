@@ -5,25 +5,49 @@ class Game {
     this.screen = this.canvas.getContext('2d');
     this.gameSize = {x: this.canvas.width, y: this.canvas.height};
     this.gameLeftSide = 0;
-    this.bodies = this.createInvaders().concat(new Player(this, this.gameSize));
-    this.gameIsRunning = false;
+    this.gameReset();
+    this.userEngaged = false;
   }
 
-initialize() {
-  this.textGameMiddle('Press button to play game');
-  button.addEventListener('click', () => {
-    if (!this.gameIsRunning) {
-      this.run();
+  initialize() {
+    window.addEventListener('blur', () => this.userEngaged = false);
+    button.addEventListener('focus', event => event.currentTarget.blur());
+    this.textGameMiddle('Press button to play game');
+
+    button.addEventListener('click', () => {
+      if (!this.userEngaged) {
+        this.userEngaged = true;
+        this.run();
+      }
+      this.gameReset();
+    });
+  }
+
+  gameReset() {
+    this.bodies = this.createInvaders().concat(new Player(this));
+  }
+
+  haveBeenDestroyed(constructorName) {
+    return this.bodies.filter(b => b.constructor.name === constructorName).length === 0;
+  }
+
+  checkStatus() {
+    if (this.haveBeenDestroyed('Player')) {
+      this.textGameMiddle('Game Over');
+
+    } else if (this.haveBeenDestroyed('Invader')) {
+      this.textGameMiddle('You Win!');
     }
-  });
-}
+  }
 
   run() {
-    this.gameIsRunning = true;
     let tick = () => {
       this.update();
-      this.draw(this.screen, this.gameSize);
-      requestAnimationFrame(tick);
+      this.draw();
+      this.checkStatus();
+      if (this.userEngaged) {
+        requestAnimationFrame(tick);
+      }
     };
     tick();
   }
@@ -46,15 +70,15 @@ initialize() {
     this.screen.fillText(text, textMiddle, this.gameSize.y / 2, this.gameSize.x);
   }
 
-  draw(screen, gameSize) {
-    screen.clearRect(0, 0, gameSize.x, gameSize.y);
+  draw() {
+    this.screen.clearRect(0, 0, this.gameSize.x, this.gameSize.y);
     for (let i = 0; i < this.bodies.length; i++) {
-      this.drawRect(screen, this.bodies[i]);
+      this.drawRect(this.bodies[i]);
     }
   }
 
-  drawRect(screen, body) {
-    screen.fillRect(body.center.x - body.size.x / 2,
+  drawRect(body) {
+    this.screen.fillRect(body.center.x - body.size.x / 2,
       body.center.y - body.size.y / 2,
       body.size.x, body.size.y);
     }
