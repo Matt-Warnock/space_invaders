@@ -1,8 +1,8 @@
 class Player {
-  constructor(game, gameSize) {
+  constructor(game) {
     this.game = game;
     this.size = {x: 15, y: 15};
-    this.center = {x: gameSize.x / 2, y: gameSize.y - this.size.x};
+    this.center = {x: this.game.gameSize.x / 2, y: this.game.gameSize.y - this.size.x};
     this.keyboarder = new Keyboarder();
   }
   update() {

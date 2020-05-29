@@ -5,7 +5,7 @@ class Game {
     this.screen = this.canvas.getContext('2d');
     this.gameSize = {x: this.canvas.width, y: this.canvas.height};
     this.gameLeftSide = 0;
-    this.bodies = [];
+    this.bodies = this.bodies = this.createInvaders().concat(new Player(this));
     this.gameInitialized = false;
   }
 
@@ -16,7 +16,6 @@ class Game {
     button.addEventListener('click', () => {
       if (!this.gameInitialized) {
         this.gameInitialized = true;
-        this.gameReset();
         this.run();
       }
       this.gameReset();
@@ -24,8 +23,7 @@ class Game {
   }
 
   gameReset() {
-    this.screen.clearRect(0, 0, this.gameSize.x, this.gameSize.y);
-    this.bodies = this.createInvaders().concat(new Player(this, this.gameSize));
+    this.bodies = this.createInvaders().concat(new Player(this));
   }
 
   haveBeenDestroyed(constructorName) {
@@ -36,7 +34,7 @@ class Game {
     if (this.haveBeenDestroyed('Player')) {
       this.textGameMiddle('Game Over');
 
-    } else if (this.haveBeenDestroyed('Invader') && !this.haveBeenDestroyed('Player')) {
+    } else if (this.haveBeenDestroyed('Invader')) {
       this.textGameMiddle('You Win!');
     }
   }
