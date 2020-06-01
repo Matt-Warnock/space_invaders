@@ -7,7 +7,7 @@ class Game {
     this.gameLeftSide = 0;
     this.gameReset();
     this.userEngaged = false;
-    this.playerLives = 2;
+    this.playerLives = 3;
   }
 
   initialize() {
@@ -26,7 +26,7 @@ class Game {
 
   gameReset() {
     this.bodies = this.createInvaders().concat(new Player(this));
-    this.playerLives = 2;
+    this.playerLives = 3;
   }
 
   haveBeenDestroyed(constructorName) {
@@ -35,7 +35,8 @@ class Game {
 
   checkStatus() {
     if (this.haveBeenDestroyed('Player')) {
-      if (this.playerLives < 1) {
+      if (this.playerLives <= 1) {
+        this.playerLives -= 1;
         this.textGameMiddle('Game Over');
         return;
       }
@@ -77,11 +78,25 @@ class Game {
     this.screen.fillText(text, textMiddle, this.gameSize.y / 2, this.gameSize.x);
   }
 
+  livesDisplay() {
+    const imageSize = 12;
+    let playerImage = new Image();
+
+    playerImage.src = 'images/player.png';
+    this.screen.globalAlpha = 0.6;
+    for (var i = 0; i < this.playerLives; i++) {
+      let x = (i % 3) * 15;
+      this.screen.drawImage(playerImage, x, this.gameSize.y - imageSize, imageSize, imageSize);
+    }
+    this.screen.globalAlpha = 1;
+  }
+
   draw() {
     this.screen.clearRect(0, 0, this.gameSize.x, this.gameSize.y);
     for (let i = 0; i < this.bodies.length; i++) {
       this.drawRect(this.bodies[i]);
     }
+    this.livesDisplay();
   }
 
   drawRect(body) {
