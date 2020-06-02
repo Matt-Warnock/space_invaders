@@ -7,7 +7,6 @@ class Game {
     this.gameLeftSide = 0;
     this.gameReset();
     this.userEngaged = false;
-    this.playerLives = 3;
   }
 
   initialize() {
@@ -35,13 +34,12 @@ class Game {
 
   checkStatus() {
     if (this.haveBeenDestroyed('Player')) {
-      if (this.playerLives <= 1) {
-        this.playerLives -= 1;
-        this.textGameMiddle('Game Over');
+      this.playerLives -= 1;
+      if (this.playerLives > 0) {
+        this.addBody(new Player(this));
         return;
       }
-      this.addBody(new Player(this));
-      this.playerLives -= 1;
+      this.textGameMiddle('Game Over');
 
     } else if (this.haveBeenDestroyed('Invader')) {
       this.textGameMiddle('You Win!');
@@ -79,14 +77,15 @@ class Game {
   }
 
   livesDisplay() {
-    const imageSize = 12;
+    const imageSize = 12,
+    gameSizeTop = 0;
     let playerImage = new Image();
 
     playerImage.src = 'images/player.png';
     this.screen.globalAlpha = 0.6;
     for (var i = 0; i < this.playerLives; i++) {
-      let x = (i % 3) * 15;
-      this.screen.drawImage(playerImage, x, this.gameSize.y - imageSize, imageSize, imageSize);
+      let x = 265 + (i % 3) * 15;
+      this.screen.drawImage(playerImage, x, gameSizeTop, imageSize, imageSize);
     }
     this.screen.globalAlpha = 1;
   }
