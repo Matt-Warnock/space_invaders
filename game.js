@@ -7,7 +7,7 @@ class Game {
     this.gameLeftSide = 0;
     this.gameReset();
     this.userEngaged = false;
-    this.images = {background: new Image(), lifeImage: new Image(), ship: new Image(), invader: new Image(), bullet:new Image()};
+    this.images = {background: new Image(), ship: new Image(), invader: new Image(), bullet:new Image()};
   }
 
   initialize() {
@@ -72,7 +72,8 @@ class Game {
   }
 
   textGameMiddle(text) {
-    this.screen.font = 'bold 1em "Press Start 2P"';
+    this.screen.font = 'bold 0.9em "Press Start 2P"';
+    this.screen.fillStyle = '#e8eaef';
     let textMiddle = Math.max(this.gameSize.x / 2 - this.screen.measureText(text).width / 2, this.gameLeftSide);
     this.screen.fillText(text, textMiddle, this.gameSize.y / 2, this.gameSize.x);
   }
@@ -85,14 +86,13 @@ class Game {
     this.screen.globalAlpha = 0.6;
     for (var i = 0; i < this.playerLives; i++) {
       let x = 265 + (i % 3) * 15;
-      this.screen.drawImage(this.images.lifeImage, x, gameSizeTop, imageSize, imageSize);
+      this.screen.drawImage(this.images.ship, x, gameSizeTop, imageSize, imageSize);
     }
     this.screen.globalAlpha = 1;
   }
 
   draw() {
     this.images.background.src = 'images/blue-and-purple-cosmic-sky-956999.png';
-    this.images.lifeImage.src = 'images/player.png';
     this.images.ship.src = 'images/galaga_ship.png';
     this.images.invader.src = 'images/invader_3.png';
     this.images.bullet.src = 'images/bullet.png';
