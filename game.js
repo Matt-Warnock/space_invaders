@@ -7,6 +7,7 @@ class Game {
     this.gameLeftSide = 0;
     this.gameReset();
     this.userEngaged = false;
+    this.images = {background: new Image(), lifeImage: new Image(), ship: new Image(), invader: new Image(), bullet:new Image()};
   }
 
   initialize() {
@@ -79,54 +80,73 @@ class Game {
   livesDisplay() {
     const imageSize = 12,
     gameSizeTop = 0;
-    let playerImage = new Image();
 
     playerImage.src = 'images/player.png';
     this.screen.globalAlpha = 0.6;
     for (var i = 0; i < this.playerLives; i++) {
       let x = 265 + (i % 3) * 15;
-      this.screen.drawImage(playerImage, x, gameSizeTop, imageSize, imageSize);
+      this.screen.drawImage(this.images.lifeImage, x, gameSizeTop, imageSize, imageSize);
     }
     this.screen.globalAlpha = 1;
   }
 
   draw() {
+    this.images.background.src = 'images/blue-and-purple-cosmic-sky-956999.png';
+    this.images.lifeImage.src = 'images/player.png';
+    this.images.ship.src = 'images/galaga_ship.png';
+    this.images.invader.src = 'images/invader_3.png';
+    this.images.bullet.src = 'images/bullet.png';
+
     this.screen.clearRect(0, 0, this.gameSize.x, this.gameSize.y);
-    for (let i = 0; i < this.bodies.length; i++) {
-      this.drawRect(this.bodies[i]);
-    }
+    this.screen.drawImage(this.images.background, 0, 0, this.gameSize.x, this.gameSize.y);
+
+
+    this.styleObjects('Player', this.images.ship);
+    this.styleObjects('Invader', this.images.invader);
+    this.styleObjects('Bullet', this.images.bullet);
     this.livesDisplay();
   }
 
-  drawRect(body) {
-    this.screen.fillRect(body.center.x - body.size.x / 2,
+  drawImage(img, body) {
+    this.screen.drawImage(img, body.center.x - body.size.x / 2,
       body.center.y - body.size.y / 2,
       body.size.x, body.size.y);
     }
 
-    colliding(b1, b2) {
-      return !(b1 === b2 ||
-        b1.center.x + b1.size.x / 2 < b2.center.x - b2.size.x /2 ||
-        b1.center.y + b1.size.y / 2 < b2.center.y - b2.size.y /2 ||
-        b1.center.x - b1.size.x / 2 > b2.center.x + b2.size.x /2 ||
-        b1.center.y - b1.size.y / 2 > b2.center.y + b2.size.y /2);
-      }
-
-      addBody(body) {
-        this.bodies.push(body);
-      }
-
-      createInvaders() {
-        let invaders = [];
-        for (let i = 0; i < 24; i++) {
-          let x = 30 + (i % 8) * 30;
-          let y = 30 + (i % 3) * 30;
-          invaders.push(new Invader(this, {x: x, y: y}));
-        }
-        return invaders;
-      }
+    styleObjects(objName, image) {
+      let bodiesGroup = this.bodies.filter(body => body.constructor.name === objName);
+      bodiesGroup.forEach(body => this.drawObject(image, body));
     }
 
-    window.onload = function() {
-      (new Game('screen')).initialize();
-    };
+    drawObject(img, body) {
+      this.screen.drawImage(img, body.center.x - body.size.x / 2,
+        body.center.y - body.size.y / 2,
+        body.size.x, body.size.y);
+      }
+
+      colliding(b1, b2) {
+        return !(b1 === b2 ||
+          b1.center.x + b1.size.x / 2 < b2.center.x - b2.size.x /2 ||
+          b1.center.y + b1.size.y / 2 < b2.center.y - b2.size.y /2 ||
+          b1.center.x - b1.size.x / 2 > b2.center.x + b2.size.x /2 ||
+          b1.center.y - b1.size.y / 2 > b2.center.y + b2.size.y /2);
+        }
+
+        addBody(body) {
+          this.bodies.push(body);
+        }
+
+        createInvaders() {
+          let invaders = [];
+          for (let i = 0; i < 24; i++) {
+            let x = 30 + (i % 8) * 30;
+            let y = 30 + (i % 3) * 30;
+            invaders.push(new Invader(this, {x: x, y: y}));
+          }
+          return invaders;
+        }
+      }
+
+      window.onload = function() {
+        (new Game('screen')).initialize();
+      };
