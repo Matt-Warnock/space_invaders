@@ -90,6 +90,7 @@ class Game {
     this.screen.globalAlpha = 1;
   }
 
+
   draw() {
     this.screen.clearRect(0, 0, this.gameSize.x, this.gameSize.y);
     for (let i = 0; i < this.bodies.length; i++) {
