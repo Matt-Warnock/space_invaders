@@ -36,6 +36,8 @@ class Game {
   checkStatus() {
     if (this.haveBeenDestroyed('Player')) {
       this.playerLives -= 1;
+      this.sound.shipExplosion();
+
       if (this.playerLives > 0) {
         this.addBody(new Player(this));
         return;

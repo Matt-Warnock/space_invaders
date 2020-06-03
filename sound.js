@@ -13,12 +13,19 @@ class Sound {
   lazerBlast() {
     this.playerLaser.cloneNode(true).play();
   }
+
+  shipExplosion() {
+    this.playerDeath.play();
+  }
+
   invaderFire() {
     this.invaderLaser.cloneNode(true).play();
   }
+
   invaderStep() {
     this.invaderMove.play();
   }
+
   invaderKill() {
     this.invaderDeath.cloneNode(true).play();
   }
