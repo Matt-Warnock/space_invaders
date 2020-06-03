@@ -7,7 +7,7 @@ class Sound {
     this.playerDeath = new Audio('sounds/player_death1.mp3');
     this.invaderMove = new Audio('sounds/fastinvader1.mp3');
     this.invaderLaser = new Audio('sounds/ivader_laser3.mp3');
-    this.invaderDeath = new Audio('sounds/invader_death.mp3');
+    this.invaderDeath = new Audio('sounds/invaderkilled.mp3');
   }
 
   lazerBlast() {
@@ -18,5 +18,8 @@ class Sound {
   }
   invaderStep() {
     this.invaderMove.play();
+  }
+  invaderKill() {
+    this.invaderDeath.cloneNode(true).play();
   }
 }

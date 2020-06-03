@@ -64,11 +64,21 @@ class Game {
       return this.bodies.filter(b2 => {return this.colliding(b1, b2);}).length === 0;
     };
 
+    if (this.hasInvaderCollided(notCollidingWithAnything)) {
+      this.sound.invaderKill();
+    }
+
     this.bodies = this.bodies.filter(notCollidingWithAnything);
 
     for (let i = 0; i < this.bodies.length; i++) {
       this.bodies[i].update();
     }
+  }
+
+  hasInvaderCollided(notCollidingWithAnything) {
+    return this.bodies.filter(b1 => !notCollidingWithAnything(b1)).some(b => {
+      return b instanceof Invader;
+    });
   }
 
   textGameMiddle(text) {
