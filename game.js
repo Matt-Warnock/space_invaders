@@ -4,6 +4,7 @@ class Game {
     this.button = document.getElementById('button');
     this.screen = this.canvas.getContext('2d');
     this.gameSize = {x: this.canvas.width, y: this.canvas.height};
+    this.sound = new Sound();
     this.gameLeftSide = 0;
     this.gameReset();
     this.userEngaged = false;
