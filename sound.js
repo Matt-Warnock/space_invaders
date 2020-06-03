@@ -10,11 +10,7 @@ class Sound {
     this.invaderDeath = new Audio('sound/invader_death.mp3');
   }
 
-  playSound(sound) {
-    sound.play();
-  }
-
-  pauseSound(sound) {
-    sound.pause();
+  lazerBlast() {
+    this.playerLaser.cloneNode(true).play();
   }
 }
