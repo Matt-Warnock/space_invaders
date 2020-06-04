@@ -29,7 +29,10 @@ class Game {
       this.update();
       this.draw();
       if (!this.gameFinished) {
-        this.checkStatus();
+        this.playerStatus();
+        this.sound.backgroundMusic();
+      }else {
+        this.sound.stopBackgroundMusic();
       }
       if (this.userEngaged) {
         requestAnimationFrame(tick);
@@ -48,7 +51,7 @@ class Game {
     return this.bodies.filter(b => b.constructor.name === constructorName).length === 0;
   }
 
-  checkStatus() {
+  playerStatus() {
     if (this.haveBeenDestroyed('Player')) {
       this.playerLives -= 1;
       this.sound.shipExplosion();
@@ -60,6 +63,7 @@ class Game {
       this.gameFinished = true;
 
     } else if (this.haveBeenDestroyed('Invader')) {
+      this.sound.playerWin();
       this.gameFinished = true;
     }
   }
@@ -69,14 +73,13 @@ class Game {
       return this.bodies.filter(b2 => {return this.colliding(b1, b2);}).length === 0;
     };
 
-    if (this.hasInvaderCollided(notCollidingWithAnything)) {
-      this.sound.invaderKill();
-    }
-
     this.bodies = this.bodies.filter(notCollidingWithAnything);
 
     for (let i = 0; i < this.bodies.length; i++) {
       this.bodies[i].update();
+    }
+    if (this.hasInvaderCollided(notCollidingWithAnything)) {
+      this.sound.invaderKill();
     }
   }
 

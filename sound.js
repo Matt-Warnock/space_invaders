@@ -1,7 +1,7 @@
 class Sound {
   constructor() {
     this.sounds = {
-      backgroundMusic: new Audio('sound/background_music.mp3'),
+      backgroundSong: new Audio('sounds/background_music.mp3'),
       gameWin: new Audio('sounds/game_win1.mp3'),
       gameOver: new Audio('sounds/game_over2.mp3'),
       playerLaser: new Audio('sounds/player_laser6.mp3'),
@@ -15,6 +15,15 @@ class Sound {
 
   readySounds() {
     Object.values(this.sounds).forEach(sound => sound.load());
+    this.sounds.backgroundSong.loop = true;
+  }
+
+  backgroundMusic() {
+    this.sounds.backgroundSong.play();
+  }
+
+  stopBackgroundMusic() {
+    this.sounds.backgroundSong.pause();
   }
 
   lazerBlast() {
@@ -36,7 +45,12 @@ class Sound {
   invaderKill() {
     this.sounds.invaderDeath.cloneNode(true).play();
   }
+
   gameLose() {
     this.sounds.gameOver.play();
+  }
+
+  playerWin() {
+    this.sounds.gameWin.play();
   }
 }
