@@ -3,19 +3,19 @@ class Sound {
     this.sounds = {
       backgroundSong: new Audio('sounds/background_music.mp3'),
       gameWin: new Audio('sounds/game_win1.mp3'),
-      gameOver: new Audio('sounds/game_over2.mp3'),
+      gameOver: new Audio('sounds/15_Game Over.mp3'),
       playerLaser: new Audio('sounds/player_laser6.mp3'),
       playerDeath: new Audio('sounds/explosion.mp3'),
       invaderMove: new Audio('sounds/fastinvader1.mp3'),
       invaderLaser: new Audio('sounds/ivader_laser3.mp3'),
       invaderDeath: new Audio('sounds/invaderkilled.mp3')
     };
-    this.readySounds();
   }
 
   readySounds() {
     Object.values(this.sounds).forEach(sound => sound.load());
     this.sounds.backgroundSong.loop = true;
+    this.sounds.backgroundSong.volume = 0.6;
   }
 
   backgroundMusic() {
@@ -31,7 +31,7 @@ class Sound {
   }
 
   shipExplosion() {
-    this.sounds.playerDeath.play();
+    this.sounds.playerDeath.cloneNode(true).play();
   }
 
   invaderFire() {

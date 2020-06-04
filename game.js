@@ -45,6 +45,7 @@ class Game {
 
   gameReset() {
     this.gameFinished = false;
+    this.sound.readySounds();
     this.bodies = this.createInvaders().concat(new Player(this));
     this.playerLives = 3;
   }
