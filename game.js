@@ -24,7 +24,22 @@ class Game {
     });
   }
 
+  run() {
+    let tick = () => {
+      this.update();
+      this.draw();
+      if (!this.gameFinished) {
+        this.checkStatus();
+      }
+      if (this.userEngaged) {
+        requestAnimationFrame(tick);
+      }
+    };
+    tick();
+  }
+
   gameReset() {
+    this.gameFinished = false;
     this.bodies = this.createInvaders().concat(new Player(this));
     this.playerLives = 3;
   }
@@ -37,28 +52,16 @@ class Game {
     if (this.haveBeenDestroyed('Player')) {
       this.playerLives -= 1;
       this.sound.shipExplosion();
-
       if (this.playerLives > 0) {
         this.addBody(new Player(this));
         return;
       }
-      this.textGameMiddle('Game Over');
+      this.sound.gameLose();
+      this.gameFinished = true;
 
     } else if (this.haveBeenDestroyed('Invader')) {
-      this.textGameMiddle('You Win!');
+      this.gameFinished = true;
     }
-  }
-
-  run() {
-    let tick = () => {
-      this.update();
-      this.draw();
-      this.checkStatus();
-      if (this.userEngaged) {
-        requestAnimationFrame(tick);
-      }
-    };
-    tick();
   }
 
   update() {
@@ -109,6 +112,13 @@ class Game {
       this.drawRect(this.bodies[i]);
     }
     this.livesDisplay();
+
+    if (this.haveBeenDestroyed('Player') && this.playerLives === 0) {
+      this.textGameMiddle('Game Over');
+    }else if (this.haveBeenDestroyed('Invader')) {
+      this.textGameMiddle('You Win!');
+    }
+
   }
 
   drawRect(body) {
