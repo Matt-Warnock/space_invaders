@@ -31,8 +31,10 @@ class Game {
       if (!this.gameFinished) {
         this.playerStatus();
         this.sound.backgroundMusic();
+        this.sound.invaderStepMute(false);
       }else {
         this.sound.stopBackgroundMusic();
+        this.sound.invaderStepMute(true);
       }
       if (this.userEngaged) {
         requestAnimationFrame(tick);

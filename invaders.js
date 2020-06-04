@@ -14,6 +14,7 @@ class Invader {
 
     this.center.x += this.speedX;
     this.patrolX += this.speedX;
+
     this.game.sound.invaderStep();
 
     if (Math.random() > 0.995 && !this.invadersBelow(this)) {

@@ -42,6 +42,10 @@ class Sound {
     this.sounds.invaderMove.play();
   }
 
+  invaderStepMute(boolen) {
+    this.sounds.invaderMove.muted = boolen;
+  }
+
   invaderKill() {
     this.sounds.invaderDeath.cloneNode(true).play();
   }
