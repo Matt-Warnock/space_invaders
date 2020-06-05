@@ -1,6 +1,31 @@
 body {
   font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(#000000,#2716ec);
+}
+.game_cab {
+  position: relative;
+  margin: auto;
+  width: 50%;
 }
 canvas {
   background-color: black;
+  position: absolute;
+  border: black solid 1px;
+  border-radius: 20px;
+  border-width: 10px 125px;
+  left: 11%;
+  bottom: 25%;
+}
+img {
+  position: relative;
+}
+button {
+  position: absolute;
+  left: 48%;
+  bottom: 17%;
+
+  width: 60px;
+  height: 60px;
+  background-color: #e00000;
+  border-radius: 60px;
 }

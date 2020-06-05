@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Space Invaders</title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Space Invaders</title>
+</head>
+<body>
+  <div class="game_cab">
     <canvas id="screen" width="310" height="310"></canvas>
-    <button type="button" id="button">Start</button>
-    <script src="bullets.js"></script>
-    <script src="invaders.js"></script>
-    <script src="keyboarder.js"></script>
-    <script src="player.js"></script>
-    <script src="game.js"></script>
-    <script src="display.js"></script>
-    <script src="sound.js"></script>
-  </body>
+    <img src="images/invadbez.png" alt="space invaders bezel" width="700px" height="890px">
+    <button type="button" id="button"></button>
+
+  </div>
+  <script src="bullets.js"></script>
+  <script src="invaders.js"></script>
+  <script src="keyboarder.js"></script>
+  <script src="player.js"></script>
+  <script src="game.js"></script>
+  <script src="display.js"></script>
+  <script src="sound.js"></script>
+</body>
 </html>
