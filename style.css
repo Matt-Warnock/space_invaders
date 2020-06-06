@@ -1,28 +1,28 @@
 body {
-  font-family: 'Press Start 2P', cursive;
   background: linear-gradient(#000000,#2716ec);
 }
 .game_cab {
   position: relative;
   margin: auto;
-  width: 50%;
+  width: 47%;
 }
 canvas {
-  background-color: black;
   position: absolute;
-  border: black solid 1px;
-  border-radius: 20px;
-  border-width: 10px 125px;
-  left: 11%;
-  bottom: 25%;
+  left: 10.6%;
+  bottom: 15%;
+
+  background-color: black;
+  padding: 10px 108px;
+  font-family: 'Press Start 2P', cursive;
 }
 img {
+  width: 100%;
   position: relative;
 }
 button {
   position: absolute;
-  left: 48%;
-  bottom: 17%;
+  left: 47%;
+  bottom: 1.5%;
 
   width: 60px;
   height: 60px;
