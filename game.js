@@ -28,7 +28,7 @@ class Game {
     let tick = () => {
       this.update();
       this.draw();
-      if (!this.gameFinished) {
+      if (this.gameInProgress) {
         this.playerStatus();
         this.sound.backgroundMusic();
         this.sound.invaderStepMute(false);
@@ -44,7 +44,7 @@ class Game {
   }
 
   gameReset() {
-    this.gameFinished = false;
+    this.gameInProgress = true;
     this.sound.readySounds();
     this.bodies = this.createInvaders().concat(new Player(this));
     this.playerLives = 3;
@@ -63,11 +63,11 @@ class Game {
         return;
       }
       this.sound.gameLose();
-      this.gameFinished = true;
+      this.gameInProgress = false;
 
     } else if (this.haveBeenDestroyed('Invader')) {
       this.sound.playerWin();
-      this.gameFinished = true;
+      this.gameInProgress = false;
     }
   }
 

@@ -2,7 +2,7 @@ class Sound {
   constructor() {
     this.sounds = {
       backgroundSong: new Audio('sounds/background_music.mp3'),
-      gameWin: new Audio('sounds/game_win1.mp3'),
+      gameWin: new Audio('sounds/game_win1.wav'),
       gameOver: new Audio('sounds/15_Game Over.mp3'),
       playerLaser: new Audio('sounds/player_laser6.mp3'),
       playerDeath: new Audio('sounds/explosion.mp3'),
