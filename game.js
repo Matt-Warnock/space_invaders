@@ -1,10 +1,8 @@
 class Game {
   constructor(canvasId) {
-    this.ui = new Ui(canvasId, this);
-    this.button = document.getElementById('button');
-    this.gameSize = {x: this.ui.canvas.width, y: this.ui.canvas.height};
+    this.display = new Display(canvasId, this);
+    this.gameSize = {x: this.display.canvas.width, y: this.display.canvas.height};
     this.gameLeftSide = 0;
-    this.userEngaged = false;
     this.gameReset();
   }
 
@@ -23,26 +21,12 @@ class Game {
     return invaders;
   }
 
-  initialize() {
-    window.addEventListener('blur', () => this.userEngaged = false);
-    this.button.addEventListener('focus', event => event.currentTarget.blur());
-    this.ui.textGameMiddle('Press button to play');
-
-    this.button.addEventListener('click', () => {
-      if (!this.userEngaged) {
-        this.userEngaged = true;
-        this.run();
-      }
-      this.gameReset();
-    });
-  }
-
-  run() {
+  run(userinterface) {
     let tick = () => {
       this.update();
-      this.ui.draw();
+      this.display.draw(this);
       this.checkStatus();
-      if (this.userEngaged) {
+      if (userinterface.userEngaged) {
         requestAnimationFrame(tick);
       }
     };
@@ -76,10 +60,10 @@ class Game {
           this.addBody(new Player(this));
           return;
         }
-        this.ui.textGameMiddle('Game Over');
+        this.display.textGameMiddle('Game Over', this);
 
       } else if (this.haveBeenDestroyed('Invader')) {
-        this.ui.textGameMiddle('You Win!');
+        this.display.textGameMiddle('You Win!', this);
       }
     }
 
@@ -91,8 +75,3 @@ class Game {
       this.bodies.push(body);
     }
   }
-
-
-  window.onload = function() {
-    (new Game('screen')).initialize();
-  };
