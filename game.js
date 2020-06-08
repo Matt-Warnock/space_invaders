@@ -29,12 +29,10 @@ class Game {
       this.update();
       this.draw();
       if (this.gameInProgress) {
-        this.playerStatus();
+        this.checkStatus();
         this.sound.backgroundMusic();
-        this.sound.invaderStepMute(false);
       }else {
         this.sound.stopBackgroundMusic();
-        this.sound.invaderStepMute(true);
       }
       if (this.userEngaged) {
         requestAnimationFrame(tick);
@@ -45,7 +43,6 @@ class Game {
 
   gameReset() {
     this.gameInProgress = true;
-    this.sound.readySounds();
     this.bodies = this.createInvaders().concat(new Player(this));
     this.playerLives = 3;
   }
@@ -54,19 +51,19 @@ class Game {
     return this.bodies.filter(b => b.constructor.name === constructorName).length === 0;
   }
 
-  playerStatus() {
+  checkStatus() {
     if (this.haveBeenDestroyed('Player')) {
       this.playerLives -= 1;
-      this.sound.shipExplosion();
+      this.sound.playerDeath();
       if (this.playerLives > 0) {
         this.addBody(new Player(this));
         return;
       }
-      this.sound.gameLose();
+      this.sound.gameOver();
       this.gameInProgress = false;
 
     } else if (this.haveBeenDestroyed('Invader')) {
-      this.sound.playerWin();
+      this.sound.gameWin();
       this.gameInProgress = false;
     }
   }
@@ -82,7 +79,7 @@ class Game {
       this.bodies[i].update();
     }
     if (this.hasInvaderCollided(notCollidingWithAnything)) {
-      this.sound.invaderKill();
+      this.sound.invaderDeath();
     }
   }
 

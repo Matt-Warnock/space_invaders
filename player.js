@@ -20,7 +20,7 @@ class Player {
       this.keyboarder.restore(this.keyboarder.KEYS.SPACE);
       let bullet = new Bullet ({x: this.center.x, y: this.center.y - this.size.x / 2}, {x: 0, y: -7});
       this.game.addBody(bullet);
-      this.game.sound.lazerBlast();
+      this.game.sound.playerLaser();
     }
   }
 }
