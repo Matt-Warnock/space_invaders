@@ -60,10 +60,10 @@ class Game {
           this.addBody(new Player(this));
           return;
         }
-        this.display.textGameMiddle('Game Over', this);
+        this.display.centeredMessage('Game Over', this);
 
       } else if (this.haveBeenDestroyed('Invader')) {
-        this.display.textGameMiddle('You Win!', this);
+        this.display.centeredMessage('You Win!', this);
       }
     }
 

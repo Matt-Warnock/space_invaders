@@ -4,28 +4,46 @@ body {
 .game_cab {
   position: relative;
   margin: auto;
-  width: 47%;
+  width: 600px;
+  height: 665px;
+
+  background-color: black;
+}
+
+.game_cab::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: url("images/invadbez.png") 0 0 no-repeat;
+  background-size: 600px 665px;
 }
 canvas {
   position: absolute;
-  left: 10.6%;
-  bottom: 15%;
+  top: 230px;
+  left: 60px;
 
   background-color: black;
-  padding: 10px 108px;
+  margin: 9px 94px;
   font-family: 'Press Start 2P', cursive;
 }
-img {
-  width: 100%;
-  position: relative;
+
+.canvas_when_playing {
+  background: url('images/blue-and-purple-cosmic-sky-956999.png') top left no-repeat;
 }
+
 button {
   position: absolute;
-  left: 47%;
-  bottom: 1.5%;
+  left: 275px;
+  bottom: 6px;
 
   width: 60px;
   height: 60px;
   background-color: #e00000;
-  border-radius: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
 }
