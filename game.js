@@ -8,18 +8,22 @@ class Game {
   }
 
   gameReset() {
+    const firstLevelSpeed = 0.3,
+    firstLevelFireRate = 0.995;
+
+    this.gameLevel = 1;
     this.gameInProgress = true;
     this.sound.readySounds();
-    this.bodies = this.createInvaders().concat(new Player(this));
+    this.bodies = this.createInvaders(firstLevelSpeed, firstLevelFireRate).concat(new Player(this));
     this.playerLives = 3;
   }
 
-  createInvaders() {
+  createInvaders(speedX, fireRate) {
     let invaders = [];
     for (let i = 0; i < 24; i++) {
       let x = 30 + (i % 8) * 30;
       let y = 30 + (i % 3) * 30;
-      invaders.push(new Invader(this, {x: x, y: y}));
+      invaders.push(new Invader(this, {x: x, y: y}, speedX, fireRate));
     }
     return invaders;
   }
@@ -45,17 +49,45 @@ class Game {
     if (this.haveBeenDestroyed('Player')) {
       this.playerLives -= 1;
       this.sound.playerDeath();
+
       if (this.playerLives > 0) {
         this.addBody(new Player(this));
         return;
       }
-      this.sound.gameOver();
       this.gameInProgress = false;
+      this.sound.gameOver();
 
     } else if (this.haveBeenDestroyed('Invader')) {
-      this.sound.gameWin();
       this.gameInProgress = false;
+      this.gameLevel += 1;
+
+      if (this.gameLevel === 4) {
+        this.sound.gameWin();
+        return;
+      }
+      this.sound.levelIntro();
+      this.levelProgression();
     }
+  }
+
+  levelProgression() {
+    const secondLevelSpeed = 0.7,
+    secondLevelFireRate = 0.992,
+    thirdLevelSpeed = 1,
+    thirdLevelFireRate = 0.988;
+
+    setTimeout(() => {
+      if (this.gameLevel === 2) {
+        this.nextLevel(secondLevelSpeed, secondLevelFireRate);
+        return;
+      }
+      this.nextLevel(thirdLevelSpeed, thirdLevelFireRate);
+    }, 3000);
+  }
+
+  nextLevel(speedX, fireRate) {
+    this.gameInProgress = true;
+    this.bodies = this.createInvaders(speedX, fireRate).concat(new Player(this));
   }
 
   update() {

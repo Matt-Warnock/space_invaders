@@ -29,8 +29,14 @@ class Display {
 
     if (game.haveBeenDestroyed('Player') && game.playerLives === 0) {
       this.centeredMessage('Game Over', game);
-
-    } else if (game.haveBeenDestroyed('Invader')) {
+      return;
+    } else if (game.haveBeenDestroyed('Invader') && game.gameLevel === 2) {
+      this.centeredMessage('Level Two', game);
+      return;
+    } else if (game.haveBeenDestroyed('Invader') && game.gameLevel === 3) {
+      this.centeredMessage('Level Three', game);
+      return;
+    } else if (game.haveBeenDestroyed('Invader') && game.gameLevel === 4) {
       this.centeredMessage('You Win!', game);
     }
   }

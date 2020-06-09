@@ -2,11 +2,13 @@ class Sound {
   constructor() {
     this.sounds = {
       backgroundMusic: new Audio('sounds/background_music.mp3'),
+      levelIntro: new Audio('sounds/level_intro.wav'),
       gameWin: new Audio('sounds/game_win1.wav'),
       gameOver: new Audio('sounds/15_Game Over.mp3'),
       playerLaser: new Audio('sounds/player_laser6.mp3'),
       playerDeath: new Audio('sounds/explosion.mp3'),
       invaderStep: new Audio('sounds/fastinvader1.mp3'),
+      invaderMove: new Audio('sounds/fastinvader4.mp3'),
       invaderLaser: new Audio('sounds/ivader_laser3.mp3'),
       invaderDeath: new Audio('sounds/invaderkilled.mp3')
     };
@@ -21,12 +23,18 @@ class Sound {
   backgroundMusic() {
     this.sounds.backgroundMusic.play();
     this.sounds.invaderStep.muted = false;
+    this.sounds.invaderMove.muted = false;
   }
 
   stopBackgroundMusic() {
     this.sounds.backgroundMusic.pause();
     this.sounds.backgroundMusic.currentTime = 0;
     this.sounds.invaderStep.muted = true;
+    this.sounds.invaderMove.muted = true;
+  }
+
+  levelIntro() {
+    this.sounds.levelIntro.play();
   }
 
   playerLaser() {
@@ -43,6 +51,10 @@ class Sound {
 
   invaderStep() {
     this.sounds.invaderStep.play();
+  }
+
+  invaderMove() {
+    this.sounds.invaderMove.play();
   }
 
   invaderDeath() {
