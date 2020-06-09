@@ -26,7 +26,7 @@ class Invader {
     }
 
     if (Math.random() > this.fireRate && !this.invadersBelow(this)) {
-      let bullet = new Bullet ({x: this.center.x, y: this.center.y + this.size.x / 2}, {x: Math.random() - 0.5 , y: 2});
+      let bullet = new Bullet ({x: this.center.x, y: this.center.y + this.size.x / 2}, {x: Math.random() - 0.5 , y: 3});
       this.game.addBody(bullet);
       this.game.sound.invaderLaser();
     }

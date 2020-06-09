@@ -26,6 +26,7 @@ class Display {
     this.styleObjects('Invader', this.images.invader, game);
     this.styleObjects('Bullet', this.images.bullet, game);
     this.livesDisplay(game);
+    this.score(game);
 
     if (game.haveBeenDestroyed('Player') && game.playerLives === 0) {
       this.centeredMessage('Game Over', game);
@@ -57,7 +58,14 @@ class Display {
   livesDisplay(game) {
     const displayTotalWithMargin = 46,
     imageSize = 12,
-    gameSizeTop = 1;
+    gameSizeTop = 1,
+    margin = 5,
+    text = 'Lives: ';
+
+    this.screen.font = '7px "Press Start 2P"';
+    this.screen.fillStyle = '#e8eaef';
+    let startPosition = game.gameSize.x - displayTotalWithMargin - this.screen.measureText(text).width + 5;
+    this.screen.fillText(text, startPosition, gameSizeTop + imageSize);
 
     this.screen.globalAlpha = 0.6;
     for (var i = 0; i < game.playerLives; i++) {
@@ -65,5 +73,11 @@ class Display {
       this.screen.drawImage(this.images.ship, x, gameSizeTop, imageSize, imageSize);
     }
     this.screen.globalAlpha = 1;
+  }
+
+  score(game) {
+    this.screen.font = '7px "Press Start 2P"';
+    this.screen.fillStyle = '#e8eaef';
+    this.screen.fillText('Score: '+game.score, 3, 13);
   }
 }

@@ -12,6 +12,7 @@ class Game {
     firstLevelFireRate = 0.995;
 
     this.gameLevel = 1;
+    this.score = 0;
     this.gameInProgress = true;
     this.sound.readySounds();
     this.bodies = this.createInvaders(firstLevelSpeed, firstLevelFireRate).concat(new Player(this));
@@ -102,6 +103,7 @@ class Game {
     }
     if (this.hasInvaderCollided(notCollidingWithAnything)) {
       this.sound.invaderDeath();
+      this.score += 50;
     }
   }
 
