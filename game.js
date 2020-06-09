@@ -15,6 +15,7 @@ class Game {
     this.score = 0;
     this.gameInProgress = true;
     this.sound.readySounds();
+    this.sound.backgroundMusic();
     this.bodies = this.createInvaders(firstLevelSpeed, firstLevelFireRate).concat(new Player(this));
     this.playerLives = 3;
   }
@@ -35,9 +36,6 @@ class Game {
       this.display.draw(this);
       if (this.gameInProgress && userinterface.userEngaged) {
         this.checkStatus();
-        this.sound.backgroundMusic();
-      }else {
-        this.sound.stopBackgroundMusic();
       }
       if (userinterface.userEngaged) {
         requestAnimationFrame(tick);
@@ -48,18 +46,23 @@ class Game {
 
   checkStatus() {
     if (this.haveBeenDestroyed('Player')) {
+      this.gameInProgress = false;
       this.playerLives -= 1;
       this.sound.playerDeath();
 
       if (this.playerLives > 0) {
-        this.addBody(new Player(this));
+        setTimeout(() => {
+          this.addBody(new Player(this));
+          this.gameInProgress = true;
+        }, 500);
         return;
       }
-      this.gameInProgress = false;
+      this.sound.stopBackgroundMusic();
       this.sound.gameOver();
 
     } else if (this.haveBeenDestroyed('Invader')) {
       this.gameInProgress = false;
+      this.sound.stopBackgroundMusic();
       this.gameLevel += 1;
 
       if (this.gameLevel === 4) {
@@ -78,6 +81,7 @@ class Game {
     thirdLevelFireRate = 0.988;
 
     setTimeout(() => {
+      this.sound.backgroundMusic();
       if (this.gameLevel === 2) {
         this.nextLevel(secondLevelSpeed, secondLevelFireRate);
         return;
