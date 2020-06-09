@@ -9,6 +9,7 @@ class Game {
 
   gameReset() {
     this.gameInProgress = true;
+    this.sound.readySounds();
     this.bodies = this.createInvaders().concat(new Player(this));
     this.playerLives = 3;
   }
@@ -27,7 +28,7 @@ class Game {
     let tick = () => {
       this.update();
       this.display.draw(this);
-      if (this.gameInProgress) {
+      if (this.gameInProgress && userinterface.userEngaged) {
         this.checkStatus();
         this.sound.backgroundMusic();
       }else {

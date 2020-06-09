@@ -10,7 +10,6 @@ class Sound {
       invaderLaser: new Audio('sounds/ivader_laser3.mp3'),
       invaderDeath: new Audio('sounds/invaderkilled.mp3')
     };
-    this.readySounds();
   }
 
   readySounds() {

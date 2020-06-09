@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Space Invaders</title>
 </head>
+
 <body>
   <div class="game_cab">
     <canvas id="screen" width="310" height="310"></canvas>
     <button type="button" id="button"></button>
   </div>
-  <footer><strong>Graphics:</strong><br>Invaders & artwork from: <a href="http://www.classicgaming.cc/">Classicgaming.cc</a><br>Galaga ship by Sheena Shah<br>Game background by: Felix Mittermeier</footer>
+  <footer>
+    <div>
+      <strong>Graphics:</strong><br>Invaders & artwork from: <a href="http://www.classicgaming.cc/">Classicgaming.cc</a><br>Galaga ship by Sheena Shah<br>Game background by: Felix Mittermeier
+    </div>
+    <div>
+        <strong>Sounds:</strong><br>Sound FX from: <a href="http://www.classicgaming.cc/">Classicgaming.cc</a><br>Lazer FX & Music by: Matt Warnock<br>Game over music by: Steve Rockett
+    </div>
+    </footer>
   <script src="bullets.js"></script>
   <script src="invaders.js"></script>
   <script src="keyboarder.js"></script>
@@ -21,4 +30,5 @@
   <script src="sound.js"></script>
   <script src="userinterface.js"></script>
 </body>
+
 </html>

@@ -27,11 +27,11 @@ class Display {
     this.styleObjects('Bullet', this.images.bullet, game);
     this.livesDisplay(game);
 
-    if (this.haveBeenDestroyed('Player') && this.playerLives === 0) {
-      this.centeredMessage('Game Over', this);
+    if (game.haveBeenDestroyed('Player') && game.playerLives === 0) {
+      this.centeredMessage('Game Over', game);
 
-    } else if (this.haveBeenDestroyed('Invader')) {
-      this.centeredMessage('You Win!', this);
+    } else if (game.haveBeenDestroyed('Invader')) {
+      this.centeredMessage('You Win!', game);
     }
   }
 
