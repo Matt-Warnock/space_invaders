@@ -64,7 +64,7 @@ class Display {
 
     this.screen.font = '7px "Press Start 2P"';
     this.screen.fillStyle = '#e8eaef';
-    let startPosition = game.gameSize.x - displayTotalWithMargin - this.screen.measureText(text).width + 5;
+    let startPosition = game.gameSize.x - displayTotalWithMargin - this.screen.measureText(text).width + margin;
     this.screen.fillText(text, startPosition, gameSizeTop + imageSize);
 
     this.screen.globalAlpha = 0.6;
@@ -76,8 +76,11 @@ class Display {
   }
 
   score(game) {
+    const leftMargin = 3,
+    fontSizeWithTopMargin = 13;
+
     this.screen.font = '7px "Press Start 2P"';
     this.screen.fillStyle = '#e8eaef';
-    this.screen.fillText('Score: '+game.score, 3, 13);
+    this.screen.fillText('Score: ' + game.score, leftMargin, fontSizeWithTopMargin);
   }
 }

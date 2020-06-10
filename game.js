@@ -14,8 +14,7 @@ class Game {
     this.gameLevel = 1;
     this.score = 0;
     this.gameInProgress = true;
-    this.sound.readySounds();
-    this.sound.backgroundMusic();
+    this.sound.resetSounds();
     this.bodies = this.createInvaders(firstLevelSpeed, firstLevelFireRate).concat(new Player(this));
     this.playerLives = 3;
   }
@@ -39,7 +38,10 @@ class Game {
       }
       if (userinterface.userEngaged) {
         requestAnimationFrame(tick);
+        return;
       }
+      this.sound.stopBackgroundMusic();
+
     };
     tick();
   }
@@ -78,7 +80,8 @@ class Game {
     const secondLevelSpeed = 0.7,
     secondLevelFireRate = 0.992,
     thirdLevelSpeed = 1,
-    thirdLevelFireRate = 0.988;
+    thirdLevelFireRate = 0.988,
+    levelIntroLength = 2900;
 
     setTimeout(() => {
       this.sound.backgroundMusic();
@@ -87,7 +90,7 @@ class Game {
         return;
       }
       this.nextLevel(thirdLevelSpeed, thirdLevelFireRate);
-    }, 3000);
+    }, levelIntroLength);
   }
 
   nextLevel(speedX, fireRate) {
@@ -99,6 +102,8 @@ class Game {
     let notCollidingWithAnything = b1 => {
       return this.bodies.filter(b2 => {return this.colliding(b1, b2);}).length === 0;
     };
+
+    this.bodies = this.bodies.filter(body => {return this.onDisplay(body);});
 
     this.bodies = this.bodies.filter(notCollidingWithAnything);
 
@@ -125,11 +130,18 @@ class Game {
       b1.center.y - b1.size.y / 2 > b2.center.y + b2.size.y /2);
     }
 
-    haveBeenDestroyed(constructorName) {
-      return this.bodies.filter(b => b.constructor.name === constructorName).length === 0;
-    }
+    onDisplay(b) {
+      return !(b.center.x + b.size.x / 2 < 0 ||
+        b.center.x + b.size.x / 2 > this.gameSize.x ||
+        b.center.y + b.size.y / 2 < 0 ||
+        b.center.y + b.size.y / 2 > this.gameSize.y);
+      }
 
-    addBody(body) {
-      this.bodies.push(body);
+      haveBeenDestroyed(constructorName) {
+        return this.bodies.filter(b => b.constructor.name === constructorName).length === 0;
+      }
+
+      addBody(body) {
+        this.bodies.push(body);
+      }
     }
-  }

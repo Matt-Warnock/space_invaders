@@ -17,6 +17,7 @@ class Ui {
         this.game.run(this);
       }
       this.game.gameReset();
+      this.game.sound.backgroundMusic();
     });
   }
 }

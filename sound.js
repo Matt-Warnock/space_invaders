@@ -12,12 +12,20 @@ class Sound {
       invaderLaser: new Audio('sounds/ivader_laser3.mp3'),
       invaderDeath: new Audio('sounds/invaderkilled.mp3')
     };
+    this.readySounds();
   }
 
   readySounds() {
     Object.values(this.sounds).forEach(sound => sound.load());
     this.sounds.backgroundMusic.loop = true;
     this.sounds.backgroundMusic.volume = 0.6;
+  }
+
+  resetSounds() {
+    Object.values(this.sounds).forEach(sound => {
+      sound.pause();
+      sound.currentTime = 0;
+    });
   }
 
   backgroundMusic() {
