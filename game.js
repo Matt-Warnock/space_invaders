@@ -32,16 +32,18 @@ class Game {
   run(userinterface) {
     let tick = () => {
       this.update();
-      this.display.draw(this);
+
       if (this.gameInProgress && userinterface.userEngaged) {
         this.checkStatus();
       }
+      
+      this.display.draw(this);
+
       if (userinterface.userEngaged) {
         requestAnimationFrame(tick);
         return;
       }
       this.sound.stopBackgroundMusic();
-
     };
     tick();
   }
