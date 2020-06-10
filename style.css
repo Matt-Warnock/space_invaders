@@ -35,18 +35,30 @@ canvas {
   background: url('images/blue-and-purple-cosmic-sky-956999.png') top left no-repeat;
 }
 
+.start_tenplate {
+  position: relative;
+  top: 575px;
+  left: 286px;
+
+  width: 180px;
+  height: 90px;
+  background: url("images/start_tenplate.png") 0 0 no-repeat;
+  background-size: 180px 90px;
+  z-index: 1;
+}
+
 .button_border {
   position: absolute;
-  left: 275px;
-  bottom: 6px;
+  left: 114px;
+  top: 6px;
 
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
   background-color: #b4b4b4;
   border-style: none;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
 
   box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.68);
 }
