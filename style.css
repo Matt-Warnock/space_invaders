@@ -2,32 +2,23 @@ body {
   background: linear-gradient(#000000,#2716ec);
 }
 .game_cab {
-  position: relative;
-  margin: auto;
-  width: 600px;
-  height: 665px;
-
-  background-color: black;
+  width: 310px;
+  margin: 150px auto 125px;
 }
-
-.game_cab::after {
+.game_cab::before {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 25px;
 
   content: '';
   width: 100%;
   height: 100%;
-  background: url("images/invadbez.png") 0 0 no-repeat;
-  background-size: 600px 665px;
+  background: url("images/si_logo.png") 0 0 no-repeat;
+  background-size: 310px 150px;
 }
-canvas {
-  position: absolute;
-  top: 230px;
-  left: 60px;
 
+canvas {
   background-color: black;
-  margin: 9px 94px;
   font-family: 'Press Start 2P', cursive;
 }
 
@@ -35,7 +26,44 @@ canvas {
   background: url('images/blue-and-purple-cosmic-sky-956999.png') top left no-repeat;
 }
 
+.direction_template {
+  position: absolute;
+  top: 310px;
+  left: 0px;
+
+  width: 200px;
+  height: 115px;
+  background: url("images/control_template.png") 0 0 no-repeat;
+  background-size: 170px 115px;
+  z-index: 1;
+}
+
+.start_template {
+  position: absolute;
+  top: 310px;
+  left: 0px;
+
+  width: 155px;
+  height: 115px;
+  background: url("images/start_template.png") 0 0 no-repeat;
+  background-size: 155px 115px;
+  z-index: 1;
+}
+
+.fire_template {
+  position: absolute;
+  top: 310px;
+  left: 0px;
+
+  width: 135px;
+  height: 170px;
+  background: url("images/laser_template.png") 0 0 no-repeat;
+  background-size: 135px 170px;
+  z-index: 1;
+}
+
 button {
+  position: absolute;
   width: 55px;
   height: 55px;
   background-color: #b4b4b4;
@@ -60,67 +88,28 @@ button::after {
   background-color: #b40000;
 
   box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.68),
-        inset 0px 0px 6px 4px rgba(255,255,255,0.18),
-        inset 2px 1px 16px 8px rgba(0,0,0,0.4);
+  inset 0px 0px 6px 4px rgba(255,255,255,0.18),
+  inset 2px 1px 16px 8px rgba(0,0,0,0.4);
 }
 
 button:active:after {
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.68),
-        inset 0px 0px 6px 4px rgba(255,255,255,0.18),
-        inset 2px 1px 16px 8px rgba(0,0,0,0.4),
-        inset 2px 1px 8px 1px rgba(0,0,0,0.5);
-}
-
-.direction_template {
-  position: relative;
-  top: 550px;
-  left: 0px;
-
-  width: 315px;
-  height: 115px;
-  background: url("images/control_template.png") 0 0 no-repeat;
-  background-size: 315px 115px;
-  z-index: 1;
-}
-
-.start_template {
-  position: relative;
-  top: 435px;
-  left: 312px;
-
-  width: 155px;
-  height: 115px;
-  background: url("images/start_template.png") 0 0 no-repeat;
-  background-size: 155px 115px;
-  z-index: 1;
-}
-
-.fire_template {
-  position: relative;
-  top: 265px;
-  left: 465px;
-
-  width: 135px;
-  height: 170px;
-  background: url("images/laser_template.png") 0 0 no-repeat;
-  background-size: 135px 170px;
-  z-index: 1;
+  inset 0px 0px 6px 4px rgba(255,255,255,0.18),
+  inset 2px 1px 16px 8px rgba(0,0,0,0.4),
+  inset 2px 1px 8px 1px rgba(0,0,0,0.5);
 }
 
 .left_button {
-  position: absolute;
   left: 100px;
   top: 31px;
 }
 
 .right_button {
-  position: absolute;
   right: 100px;
   top: 31px;
 }
 
 .start_button {
-  position: absolute;
   left: 49px;
   top: 14px;
 
@@ -129,7 +118,6 @@ button:active:after {
 }
 
 .fire_button {
-  position: absolute;
   left: 42px;
   bottom: 30px;
 }
@@ -143,30 +131,173 @@ footer div {
 /* PC screen positions
 
 .start_template {
-  position: relative;
-  top: 575px;
-  left: 286px;
+position: relative;
+top: 575px;
+left: 286px;
 
-  width: 180px;
-  height: 90px;
-  background: url("images/start_tenplate.png") 0 0 no-repeat;
-  background-size: 180px 90px;
-  z-index: 1;
+width: 180px;
+height: 90px;
+background: url("images/start_tenplate.png") 0 0 no-repeat;
+background-size: 180px 90px;
+z-index: 1;
 }
 
 .button_border {
-  position: absolute;
-  left: 114px;
-  top: 6px;
+position: absolute;
+left: 114px;
+top: 6px;
 
-  width: 55px;
-  height: 55px;
-  background-color: #b4b4b4;
-  border-style: none;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 2;
+width: 55px;
+height: 55px;
+background-color: #b4b4b4;
+border-style: none;
+border-radius: 50%;
+cursor: pointer;
+z-index: 2;
 
-  box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.68);
+box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.68);
+}
+*/
+/* Ipad version
+body {
+background: linear-gradient(#000000,#2716ec);
+}
+.game_cab {
+position: relative;
+margin: auto;
+width: 600px;
+height: 665px;
+
+background-color: black;
+}
+
+.game_cab::after {
+position: absolute;
+top: 0;
+left: 0;
+
+content: '';
+width: 100%;
+height: 100%;
+background: url("images/invadbez.png") 0 0 no-repeat;
+background-size: 600px 665px;
+}
+canvas {
+position: absolute;
+top: 230px;
+left: 60px;
+
+background-color: black;
+margin: 9px 94px;
+font-family: 'Press Start 2P', cursive;
+}
+
+.canvas_when_playing {
+background: url('images/blue-and-purple-cosmic-sky-956999.png') top left no-repeat;
+}
+
+button {
+width: 55px;
+height: 55px;
+background-color: #b4b4b4;
+border-style: none;
+border-radius: 50%;
+cursor: pointer;
+z-index: 2;
+
+box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.68);
+}
+
+button::after {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-48%, -50%);
+
+content: '';
+width: 67%;
+height: 67%;
+border-radius: 50%;
+background-color: #b40000;
+
+box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.68),
+inset 0px 0px 6px 4px rgba(255,255,255,0.18),
+inset 2px 1px 16px 8px rgba(0,0,0,0.4);
+}
+
+button:active:after {
+box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.68),
+inset 0px 0px 6px 4px rgba(255,255,255,0.18),
+inset 2px 1px 16px 8px rgba(0,0,0,0.4),
+inset 2px 1px 8px 1px rgba(0,0,0,0.5);
+}
+
+.direction_template {
+position: relative;
+top: 550px;
+left: 0px;
+
+width: 315px;
+height: 115px;
+background: url("images/control_template.png") 0 0 no-repeat;
+background-size: 315px 115px;
+z-index: 1;
+}
+
+.start_template {
+position: relative;
+top: 435px;
+left: 312px;
+
+width: 155px;
+height: 115px;
+background: url("images/start_template.png") 0 0 no-repeat;
+background-size: 155px 115px;
+z-index: 1;
+}
+
+.fire_template {
+position: relative;
+top: 265px;
+left: 465px;
+
+width: 135px;
+height: 170px;
+background: url("images/laser_template.png") 0 0 no-repeat;
+background-size: 135px 170px;
+z-index: 1;
+}
+
+.left_button {
+position: absolute;
+left: 100px;
+top: 31px;
+}
+
+.right_button {
+position: absolute;
+right: 100px;
+top: 31px;
+}
+
+.start_button {
+position: absolute;
+left: 49px;
+top: 14px;
+
+width: 60px;
+height: 60px;
+}
+
+.fire_button {
+position: absolute;
+left: 42px;
+bottom: 30px;
+}
+
+
+
+footer div {
+display: inline-block;
 }
 */
