@@ -3,12 +3,12 @@ body {
 }
 .game_cab {
   width: 310px;
-  margin: 150px auto 125px;
+  margin: 150px auto 110px;
 }
 .game_cab::before {
   position: absolute;
   top: 0;
-  left: 25px;
+
 
   content: '';
   width: 100%;
@@ -28,37 +28,37 @@ canvas {
 
 .direction_template {
   position: absolute;
-  top: 310px;
+  top: 460px;
   left: 0px;
 
-  width: 200px;
-  height: 115px;
+  width: 180px;
+  height: 100px;
   background: url("images/control_template.png") 0 0 no-repeat;
-  background-size: 170px 115px;
+  background-size: 180px 100px;
   z-index: 1;
 }
 
 .start_template {
   position: absolute;
-  top: 310px;
-  left: 0px;
+  top: 460px;
+  left: 180px;
 
-  width: 155px;
-  height: 115px;
+  width: 25%;
+  height: 100px;
   background: url("images/start_template.png") 0 0 no-repeat;
-  background-size: 155px 115px;
+  background-size: 90px 100px;
   z-index: 1;
 }
 
 .fire_template {
   position: absolute;
-  top: 310px;
-  left: 0px;
+  top: 460px;
+  left: 270px;
 
-  width: 135px;
-  height: 170px;
+  width: 25%;
+  height: 100px;
   background: url("images/laser_template.png") 0 0 no-repeat;
-  background-size: 135px 170px;
+  background-size: 90px 100px;
   z-index: 1;
 }
 
@@ -100,26 +100,26 @@ button:active:after {
 }
 
 .left_button {
-  left: 100px;
-  top: 31px;
+  left: 35px;
+  top: 23px;
 }
 
 .right_button {
-  right: 100px;
-  top: 31px;
+  right: 35px;
+  top: 23px;
 }
 
 .start_button {
-  left: 49px;
-  top: 14px;
+  left: 16px;
+  top: 7px;
 
   width: 60px;
   height: 60px;
 }
 
 .fire_button {
-  left: 42px;
-  bottom: 30px;
+  left: 18px;
+  top: 23px;
 }
 
 
