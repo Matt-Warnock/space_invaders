@@ -121,8 +121,11 @@ button:active:after {
 
 .start_button {
   position: absolute;
-  left: 90px;
-  top: 16px;
+  left: 49px;
+  top: 14px;
+
+  width: 60px;
+  height: 60px;
 }
 
 .fire_button {
