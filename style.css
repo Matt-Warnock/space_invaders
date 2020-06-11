@@ -35,7 +35,111 @@ canvas {
   background: url('images/blue-and-purple-cosmic-sky-956999.png') top left no-repeat;
 }
 
-.start_tenplate {
+button {
+  width: 55px;
+  height: 55px;
+  background-color: #b4b4b4;
+  border-style: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+
+  box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.68);
+}
+
+button::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+
+  content: '';
+  width: 67%;
+  height: 67%;
+  border-radius: 50%;
+  background-color: #b40000;
+
+  box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.68),
+        inset 0px 0px 6px 4px rgba(255,255,255,0.18),
+        inset 2px 1px 16px 8px rgba(0,0,0,0.4);
+}
+
+button:active:after {
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.68),
+        inset 0px 0px 6px 4px rgba(255,255,255,0.18),
+        inset 2px 1px 16px 8px rgba(0,0,0,0.4),
+        inset 2px 1px 8px 1px rgba(0,0,0,0.5);
+}
+
+.direction_template {
+  position: relative;
+  top: 550px;
+  left: 0px;
+
+  width: 315px;
+  height: 115px;
+  background: url("images/control_template.png") 0 0 no-repeat;
+  background-size: 315px 115px;
+  z-index: 1;
+}
+
+.start_template {
+  position: relative;
+  top: 435px;
+  left: 312px;
+
+  width: 155px;
+  height: 115px;
+  background: url("images/start_template.png") 0 0 no-repeat;
+  background-size: 155px 115px;
+  z-index: 1;
+}
+
+.fire_template {
+  position: relative;
+  top: 265px;
+  left: 465px;
+
+  width: 135px;
+  height: 170px;
+  background: url("images/laser_template.png") 0 0 no-repeat;
+  background-size: 135px 170px;
+  z-index: 1;
+}
+
+.left_button {
+  position: absolute;
+  left: 100px;
+  top: 31px;
+}
+
+.right_button {
+  position: absolute;
+  right: 100px;
+  top: 31px;
+}
+
+.start_button {
+  position: absolute;
+  left: 90px;
+  top: 16px;
+}
+
+.fire_button {
+  position: absolute;
+  left: 42px;
+  bottom: 30px;
+}
+
+
+
+footer div {
+  display: inline-block;
+}
+
+/* PC screen positions
+
+.start_template {
   position: relative;
   top: 575px;
   left: 286px;
@@ -62,31 +166,4 @@ canvas {
 
   box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.68);
 }
-
-.button_border::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-48%, -50%);
-
-  content: '';
-  width: 67%;
-  height: 67%;
-  border-radius: 50%;
-  background-color: #b40000;
-
-  box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.68),
-        inset 0px 0px 6px 4px rgba(255,255,255,0.18),
-        inset 2px 1px 16px 8px rgba(0,0,0,0.4);
-}
-
-.button_border:active:after {
-  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.68),
-        inset 0px 0px 6px 4px rgba(255,255,255,0.18),
-        inset 2px 1px 16px 8px rgba(0,0,0,0.4),
-        inset 2px 1px 8px 1px rgba(0,0,0,0.5);
-}
-
-footer div {
-  display: inline-block;
-}
+*/
