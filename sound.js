@@ -19,6 +19,9 @@ class Sound {
     Object.values(this.sounds).forEach(sound => sound.load());
     this.sounds.backgroundMusic.loop = true;
     this.sounds.backgroundMusic.volume = 0.6;
+    this.sounds.invaderStep.volume = 0.6;
+    this.sounds.invaderMove.volume = 0.6;
+    this.sounds.invaderDeath.volume = 0.2;
   }
 
   resetSounds() {

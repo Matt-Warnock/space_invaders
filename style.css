@@ -121,7 +121,7 @@ button:active:after {
 }
 
 .fire_button {
-  left: 18px;
+  left: 17px;
   top: 23px;
 }
 
@@ -140,9 +140,9 @@ and (min-device-width: 375px)
 and (max-device-width: 900px)
 and (orientation: landscape){
 
-body {
-  margin: 0;
-}
+  body {
+    margin: 0;
+  }
 
   .game_cab::before {
     display: none;
@@ -154,16 +154,16 @@ body {
   }
 
   .direction_template {
-    top: 210px;
+    top: 185px;
     left: -218px;
 
     width: 218px;
-    height: 100px;
-    background-size: 218px 100px;
+    height: 130px;
+    background-size: 218px 130px;
   }
 
   .start_template {
-    top: 110px;
+    top: 85px;
     left: -218px;
 
     width: 218px;
@@ -178,27 +178,32 @@ body {
     width: 160px;
     height: 150px;
     background-size: 160px 150px;
-}
+  }
 
-.left_button {
-  left: 51px;
-  top: 21px;
-}
+  button {
+    width: 60px;
+    height: 60px;
+  }
 
-.right_button {
-  right: 51px;
-  top: 21px;
-}
+  .left_button {
+    left: 38px;
+    top: 35px;
+  }
 
-.start_button {
-  left: 83px;
-  top: 8px;
-}
+  .right_button {
+    right: 38px;
+    top: 35px;
+  }
 
-.fire_button {
-  left: 53px;
-  top: 66px;
-}
+  .start_button {
+    left: 83px;
+    top: 8px;
+  }
+
+  .fire_button {
+    left: 52px;
+    top: 65px;
+  }
 
   footer {
     display: none;
@@ -302,42 +307,42 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 
 @media screen
-  and (min-device-width: 1200px)
-  and (max-device-width: 1600px)
-  and (-webkit-min-device-pixel-ratio: 1) {
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
 
-    .game_cab {
-      position: relative;
-      margin: auto;
-      width: 600px;
-      height: 665px;
-      background-color: black;
+  .game_cab {
+    position: relative;
+    margin: auto;
+    width: 600px;
+    height: 665px;
+    background-color: black;
 
-      box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.5);
-    }
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.5);
+  }
 
-    .game_cab::before {
-      display: none;
-    }
+  .game_cab::before {
+    display: none;
+  }
 
-    .game_cab::after {
-      position: absolute;
-      top: 0;
-      left: 0;
+  .game_cab::after {
+    position: absolute;
+    top: 0;
+    left: 0;
 
-      content: '';
-      width: 100%;
-      height: 100%;
-      background: url("images/invadbez.png") 0 0 no-repeat;
-      background-size: 600px 665px;
-    }
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: url("images/invadbez.png") 0 0 no-repeat;
+    background-size: 600px 665px;
+  }
 
-    canvas {
-      position: absolute;
-      top: 230px;
-      left: 60px;
-      margin: 9px 94px;
-    }
+  canvas {
+    position: absolute;
+    top: 230px;
+    left: 60px;
+    margin: 9px 94px;
+  }
 
   .direction_template {
     display: none;
@@ -373,4 +378,4 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   footer div {
     font-size: 0.9em;
-}
+  }
