@@ -33,7 +33,7 @@ canvas {
 
   width: 180px;
   height: 100px;
-  background: url("images/control_template.png") 0 0 no-repeat;
+  background: url("images/control_template1.png") 0 0 no-repeat;
   background-size: 180px 100px;
   z-index: 1;
 }
@@ -69,6 +69,10 @@ button {
   background-color: #b4b4b4;
   border-style: none;
   border-radius: 50%;
+
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
   cursor: pointer;
   z-index: 2;
 
@@ -93,6 +97,7 @@ button::after {
 }
 
 button:active:after {
+  outline: none;
   background-color: #ff0000;
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.68),
   inset 0px 0px 6px 4px rgba(255,255,255,0.18),
@@ -101,13 +106,13 @@ button:active:after {
 }
 
 .left_button {
-  left: 32px;
-  top: 21px;
+  left: 22px;
+  top: 22px;
 }
 
 .right_button {
-  right: 32px;
-  top: 21px;
+  right: 22px;
+  top: 22px;
 }
 
 .start_button {
@@ -198,8 +203,6 @@ body {
   footer {
     display: none;
   }
-
-
 }
 
 @media only screen
@@ -258,7 +261,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   .fire_template {
     top: 495px;
-    right: 0px;
+    left: 467px;
 
     width: 135px;
     height: 170px;
@@ -266,12 +269,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .left_button {
-    left: 97px;
+    left: 85px;
     top: 29px;
   }
 
   .right_button {
-    right: 97px;
+    right: 85px;
     top: 29px;
   }
 
@@ -289,6 +292,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
     display: inline-block;
     margin-top: 0.5em;
     margin-left: 21%;
+  }
+
+  footer div {
+    font-size: 0.7em;
+    font-family: sans-Serif;
   }
 }
 
