@@ -210,6 +210,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
     box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.5);
   }
 
+  .game_cab::before {
+    display: none;
+  }
+
   .game_cab::after {
     position: absolute;
     top: 0;
