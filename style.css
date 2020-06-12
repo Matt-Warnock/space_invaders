@@ -1,4 +1,5 @@
 body {
+  font-family: 'Press Start 2P', cursive;
   background: linear-gradient(#000000,#2716ec);
 }
 .game_cab {
@@ -19,7 +20,6 @@ body {
 
 canvas {
   background-color: black;
-  font-family: 'Press Start 2P', cursive;
 }
 
 .canvas_when_playing {
@@ -120,8 +120,14 @@ button:active:after {
   top: 23px;
 }
 
+a {
+  color: #b40000;
+}
+
 footer div {
   display: inline-block;
+  font-family: cursive, sans-Serif;
+  font-size: 0.65em;
 }
 
 @media only screen
@@ -278,6 +284,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
     left: 40px;
     top: 81px;
   }
+
+  footer {
+    display: inline-block;
+    margin-top: 0.5em;
+    margin-left: 21%;
+  }
 }
 
 
@@ -347,5 +359,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   footer {
     display: inline-block;
+    margin-top: 0.5em;
+    margin-left: 28%;
   }
+
+  footer div {
+    font-size: 0.9em;
 }
