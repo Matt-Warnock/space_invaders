@@ -6,9 +6,13 @@ class Ui {
   }
 
   initialize() {
-    window.addEventListener('blur', () => this.userEngaged = false);
     this.button.addEventListener('focus', event => event.currentTarget.blur());
     this.game.display.centeredMessage('Press button to play', this.game);
+
+    window.addEventListener('blur', () => {
+      this.userEngaged = false;
+      this.game.sound.stopBackgroundMusic();
+    });
 
     this.button.addEventListener('click', () => {
       if (!this.userEngaged) {

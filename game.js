@@ -32,18 +32,14 @@ class Game {
   run(userinterface) {
     let tick = () => {
       this.update();
-
-      if (this.gameInProgress && userinterface.userEngaged) {
+      if (this.gameInProgress) {
         this.checkStatus();
       }
-      
-      this.display.draw(this);
 
+      this.display.draw(this);
       if (userinterface.userEngaged) {
         requestAnimationFrame(tick);
-        return;
       }
-      this.sound.stopBackgroundMusic();
     };
     tick();
   }
@@ -106,7 +102,6 @@ class Game {
     };
 
     this.bodies = this.bodies.filter(body => {return this.onDisplay(body);});
-
     this.bodies = this.bodies.filter(notCollidingWithAnything);
 
     for (let i = 0; i < this.bodies.length; i++) {
