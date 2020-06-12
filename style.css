@@ -2,12 +2,13 @@ body {
   background: linear-gradient(#000000,#2716ec);
 }
 .game_cab {
+  position: relative;
   width: 310px;
   margin: 150px auto 110px;
 }
 .game_cab::before {
   position: absolute;
-  top: 0;
+  top: -150px;
 
   content: '';
   width: 100%;
@@ -27,8 +28,8 @@ canvas {
 
 .direction_template {
   position: absolute;
-  top: 460px;
-  left: 0px;
+  top: 310px;
+  left: -24px;
 
   width: 180px;
   height: 100px;
@@ -39,10 +40,10 @@ canvas {
 
 .start_template {
   position: absolute;
-  top: 460px;
-  left: 180px;
+  top: 310px;
+  left: 155px;
 
-  width: 25%;
+  width: 90px;
   height: 100px;
   background: url("images/start_template.png") 0 0 no-repeat;
   background-size: 90px 100px;
@@ -51,10 +52,10 @@ canvas {
 
 .fire_template {
   position: absolute;
-  top: 460px;
-  left: 270px;
+  top: 310px;
+  right: -24px;
 
-  width: 25%;
+  width: 90px;
   height: 100px;
   background: url("images/laser_template.png") 0 0 no-repeat;
   background-size: 90px 100px;
@@ -63,8 +64,8 @@ canvas {
 
 button {
   position: absolute;
-  width: 55px;
-  height: 55px;
+  width: 58px;
+  height: 58px;
   background-color: #b4b4b4;
   border-style: none;
   border-radius: 50%;
@@ -92,6 +93,7 @@ button::after {
 }
 
 button:active:after {
+  background-color: #ff0000;
   box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.68),
   inset 0px 0px 6px 4px rgba(255,255,255,0.18),
   inset 2px 1px 16px 8px rgba(0,0,0,0.4),
@@ -99,21 +101,18 @@ button:active:after {
 }
 
 .left_button {
-  left: 35px;
-  top: 23px;
+  left: 32px;
+  top: 21px;
 }
 
 .right_button {
-  right: 35px;
-  top: 23px;
+  right: 32px;
+  top: 21px;
 }
 
 .start_button {
   left: 16px;
   top: 7px;
-
-  width: 60px;
-  height: 60px;
 }
 
 .fire_button {
@@ -139,7 +138,6 @@ body {
   }
 
   .game_cab {
-    position: relative;
     height: 310px;
     margin: 0 auto;
   }
@@ -172,23 +170,23 @@ body {
 }
 
 .left_button {
-  left: 53px;
-  top: 23px;
+  left: 51px;
+  top: 21px;
 }
 
 .right_button {
-  right: 53px;
-  top: 23px;
+  right: 51px;
+  top: 21px;
 }
 
 .start_button {
-  left: 80px;
+  left: 83px;
   top: 8px;
 }
 
 .fire_button {
-  left: 55px;
-  top: 68px;
+  left: 53px;
+  top: 66px;
 }
 
   footer {
@@ -204,7 +202,6 @@ and (max-device-width: 1024px)
 and (-webkit-min-device-pixel-ratio: 2) {
 
   .game_cab {
-    position: relative;
     margin: auto;
     width: 600px;
     height: 665px;
@@ -232,7 +229,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .direction_template {
-    position: relative;
     top: 550px;
     left: 0px;
 
@@ -242,8 +238,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .start_template {
-    position: relative;
-    top: 435px;
+    top: 550px;
     left: 312px;
 
     width: 155px;
@@ -252,9 +247,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .fire_template {
-    position: relative;
-    top: 265px;
-    left: 465px;
+    top: 495px;
+    right: 0px;
 
     width: 135px;
     height: 170px;
@@ -262,13 +256,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .left_button {
-    left: 100px;
-    top: 31px;
+    left: 97px;
+    top: 29px;
   }
 
   .right_button {
-    right: 100px;
-    top: 31px;
+    right: 97px;
+    top: 29px;
   }
 
   .start_button {
@@ -277,8 +271,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .fire_button {
-    left: 42px;
-    top: 83px;
+    left: 40px;
+    top: 81px;
   }
 }
 
@@ -330,7 +324,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .start_template {
-    position: absolute;
     top: 575px;
     left: 286px;
 
