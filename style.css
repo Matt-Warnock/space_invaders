@@ -209,6 +209,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
     width: 600px;
     height: 665px;
     background-color: black;
+
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.5);
   }
 
   .game_cab::after {
@@ -282,7 +284,42 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 
 @media screen
-and (min-device-width: 1025px) {
+  and (min-device-width: 1200px)
+  and (max-device-width: 1600px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+    .game_cab {
+      position: relative;
+      margin: auto;
+      width: 600px;
+      height: 665px;
+      background-color: black;
+
+      box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.5);
+    }
+
+    .game_cab::before {
+      display: none;
+    }
+
+    .game_cab::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: url("images/invadbez.png") 0 0 no-repeat;
+      background-size: 600px 665px;
+    }
+
+    canvas {
+      position: absolute;
+      top: 230px;
+      left: 60px;
+      margin: 9px 94px;
+    }
 
   .direction_template {
     display: none;
@@ -293,7 +330,7 @@ and (min-device-width: 1025px) {
   }
 
   .start_template {
-    position: relative;
+    position: absolute;
     top: 575px;
     left: 286px;
 
@@ -309,5 +346,9 @@ and (min-device-width: 1025px) {
 
     width: 55px;
     height: 55px;
+  }
+
+  footer {
+    display: inline-block;
   }
 }
