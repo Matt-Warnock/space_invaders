@@ -1,3 +1,6 @@
+html {
+  min-height: 100%;
+}
 body {
   font-family: 'Press Start 2P', cursive;
   background: linear-gradient(#000000,#2716ec);
@@ -308,12 +311,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 @media screen
 and (min-device-width: 1200px)
-and (max-device-width: 1600px)
+and (max-device-width: 2000px)
 and (-webkit-min-device-pixel-ratio: 1) {
 
   .game_cab {
     position: relative;
-    margin: auto;
+    margin: 5% auto;
     width: 600px;
     height: 665px;
     background-color: black;
@@ -373,7 +376,6 @@ and (-webkit-min-device-pixel-ratio: 1) {
   footer {
     display: inline-block;
     margin-top: 0.5em;
-    margin-left: 28%;
   }
 
   footer div {
